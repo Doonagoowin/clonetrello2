@@ -1,0 +1,13 @@
+<h1><%= @board.name %></h1>
+
+<ul>
+  <% @board.cards.each do |card| %>
+  <li>
+    <%= link_to card.name, card_path(card) %>
+    <% end %>
+  </li>
+</ul>
+
+<%= link_to 'Edit Board', edit_board_path %>
+<%= link_to 'Delete Board', @board, method: :delete %>
+
