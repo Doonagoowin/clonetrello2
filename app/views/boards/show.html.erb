@@ -8,6 +8,6 @@
   </li>
 </ul>
 
-<%= link_to 'Add Card', new_board_card_path(card_url) %>
-<%= link_to 'Edit Board', edit_board_path %>
+<%= link_to 'Add Card', new_board_card_path(@board) %>
+<%= link_to 'Edit Board', edit_board_path(@board) %>
 <%= link_to 'Delete Board', @board, method: :delete %>
