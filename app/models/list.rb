@@ -1,4 +1,4 @@
 class List < ApplicationRecord
-  belongs_to :card
-  has_many :listitems
+  belongs_to :board
+  has_many :cards, dependent: :destroy
 end

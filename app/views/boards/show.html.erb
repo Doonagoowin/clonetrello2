@@ -1,13 +1,38 @@
 <h1><%= @board.name %></h1>
 
-<ul>
-  <% @board.cards.each do |card| %>
-  <li>
-    <%= link_to card.name, card_path(card) %>
-    <% end %>
-  </li>
-</ul>
+<div class="">
+  <div class=" ">
+    <div class="">
+      <div class=" ">
+      </div>
+    </div>
+    <% @board.cards.each do |card| %>
+        <div class="" style="height: 150px; margin: 5px; padding: 5px; border: 1px solid black; width: 40%;">
+        <div class="placeholder">
+            <div class="header">
+                <p style="float: left;"><%= card.name %></p>
+                
+                <p style="float: right;"><%= link_to 'Add Item', new_item_path(card_id: card.id) %></p>
+            </div>
+            <br><br>
+            <div>
+              <% card.items.each do |item|%>     
+                    <div style="float: left;"><%= item.name %></div>     
+                    <div style="float: right;">
+                    <%= link_to 'Edit', edit_item_path(card_id: card.id) %>
+                    <%= link_to 'Delete', item, method: :delete %>
+                    </div>
+                    <br>
+                <% end %>
+            </div>
+        </div>
+        </div>
+    <%end%>
+  </div>
+</div>
 
-<%= link_to 'Add Card', new_board_card_path(@board) %>
-<%= link_to 'Edit Board', edit_board_path(@board) %>
-<%= link_to 'Delete Board', @board, method: :delete %>
+
+ 
+
+ <%= link_to 'Add card', new_card_path(board_id: @board.id) %>
+ <%= link_to 'Delete Board', @board, method: :delete %>

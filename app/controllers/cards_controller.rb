@@ -17,7 +17,7 @@ class CardsController < ApplicationController
     @card = @board.cards.new(card_params)
 
     if @board.cards.save
-      redirect_to cards_path
+      redirect_to [@board, @card]
     else
       render :new
     end
@@ -25,7 +25,7 @@ class CardsController < ApplicationController
 
   def update
     if @board.cards.update(card_params)
-      redirect_to cards_path
+      redirect_to [@board, @card]
     else
       render :edit
     end
@@ -35,8 +35,8 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card.destroy
-    redirect_to cards_path
+    @board.destroy
+    redirect_to [@board, @card]
   end
 
   private
@@ -50,7 +50,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:title, :description, :comment, :board_id)
+    params.require(:card).permit(:name)
   end
 
 end

@@ -1,4 +1,3 @@
 class Card < ApplicationRecord
-  belongs_to :board
-  has_many :lists
+  belongs_to :list
 end

@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :first_name, :last_name, length:{ in: 2..20 }
   
-  has_many :boards
+  has_many :boards, dependent: :destroy
 end

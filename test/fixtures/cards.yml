@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  list: one
   name: MyString
-  board: one
 
 two:
+  list: two
   name: MyString
-  board: two
