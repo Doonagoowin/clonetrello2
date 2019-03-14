@@ -1,21 +1,22 @@
 class CardsController < ApplicationController
+  before_action :set_card, only: [:show, :edit, :update, :delete]
   def index
-    @cards = @board.cards
+    @cards = Card.all
   end
 
   def show
-    @card = @board.cards.find(params[:id])
+    @card = Card.find(params[:id])
   end
   
   def new
-    @card = @board.cards.new
+    @card = Card.new
   end
 
   def create
-    @card = @board.cards.new(card_params)
+    @cards = Card.new(card_params)
 
-    if @board.cards.save
-      redirect_to cards_path
+    if @cards.save
+      redirect_to Board.find(@cards.board_id)
     else
       render :new
     end
@@ -43,7 +44,12 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:title, :description, :comment)
+    params.require(:card).permit(:name, :description, :comment, :board_id)
   end
+
+  def set_card
+    @card = Card.find(params[:id])
+  end
+  
 
 end

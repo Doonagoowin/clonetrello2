@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
-  list: one
+  card: one
 
 two:
-  body: MyText
-  list: two
+  card: two

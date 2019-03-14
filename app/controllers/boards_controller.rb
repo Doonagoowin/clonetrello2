@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-
+before_action :set_board, only: [:edit, :update, :destroy, :show]
   def create
     @board = current_user.boards.new(board_params)
     if @board.save
@@ -28,14 +28,14 @@ class BoardsController < ApplicationController
   def update
     @board = current_user.boards.find(params[:id]).update(board_params)
     if current_user.boards.update(board_params)
-      redirect_to boards_path
+      redirect_to root_path
     else
       render :edit
     end
   end
 
   def destroy
-    current_user.boards.find(params[:id]).destroy
+    @board.destroy.cards.destroy_all
     redirect_to boards_path
   end
 
@@ -43,5 +43,9 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:name)
+  end
+
+  def set_board
+    @board = Board.find(params[:id])
   end
 end

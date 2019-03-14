@@ -1,2 +1,26 @@
-<h1>Cards#show</h1>
-<p>Find me in app/views/cards/show.html.erb</p>
+<div class="ui three doubling stackable cards">
+  <div class="ui card">
+    <div class="image">
+      <div class="ui placeholder">
+      </div>
+    </div>
+    <% @cards.each do |card| %>
+        <div class="content">
+        <div class="ui placeholder">
+            <div class="header">
+                <p><%= card.name %></p>
+            </div>
+            <div class="paragraph">
+            <%= card.lists.each do |item|%>
+                <ul>
+                  <li><%= item.name %></li>
+                </ul>
+<%end%>
+            </div>
+        </div>
+        </div>
+    <%end%>
+  </div>
+</div>
+
+

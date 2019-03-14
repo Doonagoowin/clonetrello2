@@ -3,13 +3,8 @@ Rails.application.routes.draw do
 
   root 'boards#index'
     
-  resources :boards do
-    resources :cards
-  end
-  resources :cards do
-    resources :lists
-  end
-  resources :lists do
-    resources :listitems
-  end
+  resources :boards
+  resources :cards
+  resources :lists
+  resources :items
 end
