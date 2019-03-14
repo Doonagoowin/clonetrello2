@@ -1,2 +1,12 @@
-<h1>Cards#new</h1>
-<p>Find me in app/views/cards/new.html.erb</p>
+<h1>Add a New Card</h1>
+
+
+<%= form_with(model: @card, local: true) do |f| %>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true, autofocus: true %>
+</div>
+<br>
+<%= f.submit %>
+
+<% end %>

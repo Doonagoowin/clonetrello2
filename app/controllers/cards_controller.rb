@@ -46,7 +46,7 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = @board.cards.find(params[:id])
   end
 
   def card_params
