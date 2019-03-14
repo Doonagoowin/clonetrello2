@@ -50,7 +50,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:name)
+    params.require(:card).permit(:name, :board_id)
   end
 
 end

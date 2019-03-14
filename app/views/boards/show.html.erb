@@ -6,20 +6,20 @@
       <div class=" ">
       </div>
     </div>
-    <% @board.cards.each do |card| %>
+    <% @board.lists.each do |list| %>
         <div class="" style="height: 150px; margin: 5px; padding: 5px; border: 1px solid black; width: 40%;">
         <div class="placeholder">
             <div class="header">
-                <p style="float: left;"><%= card.name %></p>
+                <p style="float: left;"><%= list.name %></p>
                 
-                <p style="float: right;"><%= link_to 'Add Item', new_item_path(card_id: card.id) %></p>
+                <p style="float: right;"><%= link_to 'Add Item', new_item_path(list_id: list.id) %></p>
             </div>
             <br><br>
             <div>
-              <% card.items.each do |item|%>     
+              <% list.items.each do |item|%>     
                     <div style="float: left;"><%= item.name %></div>     
                     <div style="float: right;">
-                    <%= link_to 'Edit', edit_item_path(card_id: card.id) %>
+                    <%= link_to 'Edit', edit_item_path(list_id: list.id) %>
                     <%= link_to 'Delete', item, method: :delete %>
                     </div>
                     <br>
@@ -34,5 +34,5 @@
 
  
 
- <%= link_to 'Add card', new_card_path(board_id: @board.id) %>
+ <%= link_to 'Add List', new_board_list_path(board_id: @board.id) %>
  <%= link_to 'Delete Board', @board, method: :delete %>

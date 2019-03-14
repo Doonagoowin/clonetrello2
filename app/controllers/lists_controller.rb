@@ -1,8 +1,8 @@
 class ListsController < ApplicationController
-  before_action :set_card
+  before_action :set_board
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   def index
-    @list = @card.lists
+    @list = @board.lists
   end
 
   def show
@@ -14,23 +14,23 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to [@card, @list]
+      redirect_to [@board, @list]
     else
       render :edit
     end
   end
 
   def create
-    @list = @card.lists.new(list_params)
+    @list = @board.lists.new(list_params)
     if @list.save
-      redirect_to [@card, @list]
+      redirect_to [@board, @list]
     else
       render :new
     end
   end
 
   def new
-    @list = @card.lists.new
+    @list = @board.lists.new
   end
 
   def destroy
@@ -39,15 +39,15 @@ class ListsController < ApplicationController
   end
 
   private
-  def set_card
-    @card = @board.cards.find(params[:card_id])
+  def set_board
+    @board = current_user.boards.find(params[:board_id])
   end
 
   def set_list
-    @list = List.find(params[:id])
+    @list = @board.lists.find(params[:id])
   end
   
-  def topic_params
-    params.require(:list).permit(:name)
+  def list_params
+    params.require(:list).permit(:name, :board_id)
   end
 end
